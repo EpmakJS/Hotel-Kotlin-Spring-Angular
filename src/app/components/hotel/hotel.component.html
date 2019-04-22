@@ -1,0 +1,24 @@
+<div *ngIf="hotel">
+
+  <div class="container-fluid">
+    <mat-card>
+      <mat-card-header class="row">
+        <mat-card-title id="top" class="col-sm-12">
+          <h1>{{ hotel.name }}</h1>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="steps" *ngFor="let client of hotel.clients; let i = index">
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 id="{{i}}">
+                <a routerLink="/clients/{{ client.id }}" class="">Client {{ i+1 }}. {{ client.firstName + ' ' + client.lastName }}</a>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

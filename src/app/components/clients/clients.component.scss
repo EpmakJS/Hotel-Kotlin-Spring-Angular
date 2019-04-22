@@ -1,0 +1,29 @@
+.flex-spacer {
+  width: 100%;
+}
+
+.clients {
+  padding: 10px 10px;
+}
+
+.mat-card-actions {
+  display: flex;
+}
+
+.mat-card-content {
+  padding-left: 15px;
+  justify-content: space-around;
+
+  li {
+    font-size: 1rem;
+  }
+}
+
+.more-info-btn {
+  min-width: 100px;
+
+  &:hover, &:active {
+    text-decoration: none;
+    color: white;
+  }
+}

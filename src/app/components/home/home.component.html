@@ -1,0 +1,30 @@
+<div *ngIf="hotels">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 hotels" *ngFor="let hotel of hotels">
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar></div>
+            <mat-card-title><a routerLink="/hotels/{{ hotel.name }}" class="hotel-name">{{ hotel.name }}</a></mat-card-title>
+            <mat-card-subtitle>{{hotel.classification}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="row d-flex">
+            <ul *ngFor="let client of hotel.clients">
+              <li class="col-sm-12 col-md-8">
+                <a routerLink="/clients/{{ client.id }}" class="">{{ client.firstName + ' ' + client.lastName}}</a>
+              </li>
+            </ul>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="flex-spacer"></div>
+            <a routerLink="/hotels/{{ hotel.name }}" mat-raised-button color="primary" class="more-info-btn mat-button">More
+              Info</a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!hotels">
+  <h1>Hotels not found.</h1>
+</div>
