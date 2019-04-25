@@ -1,38 +1,26 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent} from './components/home/home.component';
-import {ClientsComponent} from './components/clients/clients.component';
-import {HotelComponent} from './components/hotel/hotel.component';
-import {ClientComponent} from './components/client/client.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/hotels',
+    redirectTo: 'hotels',
     pathMatch: 'full'
   },
   {
     path: 'hotels',
-    component: HomeComponent,
-    data: { title: 'Hotels List' }
-  },
-  {
-    path: 'hotels/:name',
-    component: HotelComponent
+    loadChildren: './components/home/hotels.module#HotelsModule'
   },
   {
     path: 'clients',
-    component: ClientsComponent,
-    data: { title: 'Clients List' }
-  },
-  {
-    path: 'clients/:id',
-    component: ClientComponent
+    loadChildren: './components/clients/clients.module#ClientsModule'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

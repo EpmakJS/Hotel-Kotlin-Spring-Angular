@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="card-wrapper row">
+    <div class="col-sm-12">
+      <mat-card>
+        <mat-card-title class="col-sm-12">
+          <h2>Create new Hotel</h2>
+        </mat-card-title>
+        <mat-card-content class="col-sm-12">
+          <form [formGroup]="hotelForm" (ngSubmit)="addHotel()">
+            <div class="row">
+              <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Name of Hotel" type="text" name="name" formControlName="name">
+                <mat-error align="end" *ngIf="!hotelForm.controls['name'].valid && hotelForm.controls['name'].touched">
+                  You must specify a classification that's between 1 and 5 characters long.
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Classification of Hotel" type="number" name="classification" formControlName="classification">
+                <mat-error align="end" *ngIf="!hotelForm.controls['classification'].valid && hotelForm.controls['classification'].touched">
+                  You must specify a name that's between 1 and 5.
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Number of Rooms" type="number" name="classification" formControlName="nbRooms">
+                <mat-error align="end" *ngIf="!hotelForm.controls['nbRooms'].valid && hotelForm.controls['nbRooms'].touched">
+                  You must specify an amount of rooms that's between 1 and 1500.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </form>
+
+          <div>
+            <p>{{hotelForm.value | json}}</p>
+          </div>
+
+          <mat-card-actions class="row">
+            <button (click)="addHotel()" mat-raised-button color="accent" class="mat-button" [disabled]="!hotelForm.valid">
+              Add Hotel
+            </button>
+          </mat-card-actions>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

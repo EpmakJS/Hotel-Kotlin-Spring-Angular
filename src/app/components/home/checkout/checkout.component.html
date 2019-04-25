@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="card-wrapper row">
+    <div class="col-sm-12">
+      <mat-card>
+        <mat-card-title class="col-sm-12">
+          <h2>Check-out Client</h2>
+        </mat-card-title>
+        <mat-card-content class="col-sm-12">
+          <form [formGroup]="checkoutForm" (ngSubmit)="checkoutClient(checkoutForm.value)">
+            <div class="row">
+              <mat-form-field class="col-sm-12">
+                <input matInput placeholder="ID" type="number" name="id" formControlName="id">
+                <mat-error align="end" *ngIf="!checkoutForm.controls['id'].valid && checkoutForm.controls['id'].touched">
+                  You must specify an ID.
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Firstname" type="text" name="firstName" formControlName="firstName">
+                <mat-error align="end" *ngIf="!checkoutForm.controls['firstName'].valid && checkoutForm.controls['firstName'].touched">
+                  You must specify a firstname.
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Lastname" type="text" name="lastName" formControlName="lastName">
+                <mat-error align="end" *ngIf="!checkoutForm.controls['lastName'].valid && checkoutForm.controls['lastName'].touched">
+                  You must specify a lastname.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </form>
+
+          <div>
+            <p>{{checkoutForm.value | json}}</p>
+          </div>
+
+          <mat-card-actions class="row">
+            <button (click)="checkoutClient(checkoutForm.value)" mat-raised-button color="accent" class="mat-button" [disabled]="!checkoutForm.valid">
+              Check-out Client
+            </button>
+          </mat-card-actions>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

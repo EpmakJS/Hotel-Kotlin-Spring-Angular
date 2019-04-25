@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="card-wrapper row">
+    <div class="col-sm-12">
+      <mat-card>
+        <mat-card-title class="col-sm-12">
+          <h2>Check-in Client</h2>
+        </mat-card-title>
+        <mat-card-content class="col-sm-12">
+          <form [formGroup]="checkinForm" (ngSubmit)="checkinClient(checkinForm.value)">
+            <div class="row">
+              <mat-form-field class="col-sm-12">
+                <input matInput placeholder="ID" type="number" name="id" formControlName="id">
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Firstname" type="text" name="firstName" formControlName="firstName">
+                <mat-error align="end" *ngIf="!checkinForm.controls['firstName'].valid && checkinForm.controls['firstName'].touched">
+                  You must specify a firstname.
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Lastname" type="text" name="lastName" formControlName="lastName">
+                <mat-error align="end" *ngIf="!checkinForm.controls['lastName'].valid && checkinForm.controls['lastName'].touched">
+                  You must specify a lastname.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </form>
+
+          <div>
+            <p>{{checkinForm.value | json}}</p>
+          </div>
+
+          <mat-card-actions class="row">
+            <button (click)="checkinClient(checkinForm.value)" mat-raised-button color="accent" class="mat-button" [disabled]="!checkinForm.valid">
+              Check-in Client
+            </button>
+          </mat-card-actions>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

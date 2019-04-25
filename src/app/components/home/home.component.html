@@ -6,7 +6,7 @@
           <mat-card-header>
             <div mat-card-avatar></div>
             <mat-card-title><a routerLink="/hotels/{{ hotel.name }}" class="hotel-name">{{ hotel.name }}</a></mat-card-title>
-            <mat-card-subtitle>{{hotel.classification}}</mat-card-subtitle>
+            <mat-card-subtitle><star-rating [starType]="'svg'" [rating]="getRating(hotel)"></star-rating></mat-card-subtitle>
           </mat-card-header>
           <mat-card-content class="row d-flex">
             <ul *ngFor="let client of hotel.clients">
@@ -25,6 +25,9 @@
     </div>
   </div>
 </div>
+
+
+
 <div *ngIf="!hotels">
   <h1>Hotels not found.</h1>
 </div>

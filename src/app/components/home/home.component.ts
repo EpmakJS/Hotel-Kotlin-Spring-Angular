@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { HotelService } from '../../services/hotel/hotel.service';
-
-import { Hotel } from '../../models/Hotel';
+import {Component, OnInit} from '@angular/core';
+import {HotelService} from '../../services/hotel/hotel.service';
+import {Hotel} from '../../models/Hotel';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +11,18 @@ import { Hotel } from '../../models/Hotel';
 export class HomeComponent implements OnInit {
 
   protected hotels: Array<Hotel>;
-  constructor(private hotelService: HotelService) { }
+  constructor(private hotelService: HotelService,
+              private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.hotelService.getHotels()
-      .subscribe(res => this.hotels = res);
+    this.route.data.subscribe(data => {
+      this.hotels = data.hotelsResolver;
+    });
+  }
+
+  getRating(hotel: Hotel): number {
+    return hotel.classification;
   }
 
 }

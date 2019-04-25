@@ -30,4 +30,8 @@ export class ClientService {
   createClient(client: Client): Observable<Client> {
     return this.http.post<Client>(this.clientsUrl, JSON.stringify(client), httpOptions);
   }
+
+  deleteClient(id: number): Observable<Client> {
+    return this.http.delete<Client>(`${this.clientsUrl}/${id}`, httpOptions);
+  }
 }

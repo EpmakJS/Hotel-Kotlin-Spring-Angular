@@ -18,6 +18,14 @@
           </div>
         </div>
       </mat-card-content>
+      <mat-card-actions>
+        <button type="button" mat-raised-button color="warn" class="mat-button" (click)="openDialog(hotel.name)">
+          Delete Hotel
+        </button>
+        <a routerLink="/hotels/{{ hotel.name }}/update" mat-raised-button color="accent" class="mat-button">Update Hotel</a>
+        <a routerLink="/hotels/{{ hotel.name }}/checkin" mat-raised-button color="primary" class="mat-button">Check-in</a>
+        <a routerLink="/hotels/{{ hotel.name }}/checkout" mat-raised-button color="primary" class="mat-button">Check-out</a>
+      </mat-card-actions>
     </mat-card>
   </div>
 
