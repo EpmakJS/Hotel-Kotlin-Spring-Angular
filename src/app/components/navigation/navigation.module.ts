@@ -10,8 +10,7 @@ import {NavigationComponent} from './navigation.component';
   imports: [
     CommonModule,
     MatButtonModule,
-    MatToolbarModule,
-
+    MatToolbarModule
   ]
 })
 export class NavigationModule { }

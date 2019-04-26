@@ -1,22 +1,18 @@
 <div *ngIf="clients">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12 clients" *ngFor="let client of clients">
-        <mat-card>
-          <mat-card-header>
-            <div mat-card-avatar></div>
-            <mat-card-title><a routerLink="/clients/{{ client.id }}" class="client-id">{{ client.firstName + ' ' + client.lastName}}</a></mat-card-title>
-          </mat-card-header>
-          <mat-card-actions>
-            <div class="flex-spacer"></div>
-            <a routerLink="/clients/{{ client.id }}" mat-raised-button color="primary" class="more-info-btn mat-button">More
-              Info</a>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    </div>
+  <div class="clients" *ngFor="let client of clients">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title><a routerLink="/clients/{{ client.id }}" class="client-id">{{ client.firstName + ' ' + client.lastName}}</a></mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <div class="flex-spacer"></div>
+        <a routerLink="/clients/{{ client.id }}" mat-raised-button color="primary" class="more-info-btn">More
+          Info</a>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>
+
 <div *ngIf="!clients">
   <h1>Clients not found.</h1>
 </div>

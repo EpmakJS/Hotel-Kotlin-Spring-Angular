@@ -6,9 +6,8 @@ import {HotelFormComponent} from './hotel-form/hotel-form.component';
 import {HotelComponent} from './hotel/hotel.component';
 import {CheckinComponent} from './checkin/checkin.component';
 import {CheckoutComponent} from './checkout/checkout.component';
-import {UpdateHotelComponent} from './update-hotel/update-hotel.component';
 import {HotelsResolver} from './hotels.resolver';
-import {UpdateHotelResolver} from './update-hotel/update-hotel.resolver';
+import {UpdateHotelResolver} from './hotel-form/update-hotel.resolver';
 
 const routes: Routes = [
   {
@@ -36,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: ':name/update',
-    component: UpdateHotelComponent,
+    component: HotelFormComponent,
     resolve: {
       uhData: UpdateHotelResolver
     }

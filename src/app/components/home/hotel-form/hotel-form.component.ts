@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Hotel} from '../../../models/Hotel';
 import {HotelService} from '../../../services/hotel/hotel.service';
 
@@ -12,6 +12,7 @@ import {HotelService} from '../../../services/hotel/hotel.service';
 })
 export class HotelFormComponent implements OnInit {
   hotel: Hotel;
+  editingStatus = false;
   hotelForm: FormGroup;
   nameControl: FormControl;
   classificationControl: FormControl;
@@ -20,26 +21,48 @@ export class HotelFormComponent implements OnInit {
   constructor(
     private hotelService: HotelService,
     private fb: FormBuilder,
-    private router: Router
-  ) { }
-
-  ngOnInit() {
-    this.initForm();
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
+    if ('name' in this.activatedRoute.snapshot.params) {
+      this.editingStatus = true;
+    }
   }
 
-  initForm() {
+  ngOnInit() {
+    if (this.editingStatus) {
+      this.activatedRoute.data.subscribe(data => {
+        this.hotel = data.uhData;
+        this.initForm(this.hotel);
+      });
+    } else {
+      this.initForm();
+    }
+  }
+
+  initForm(hotel?: Hotel) {
+    let name = null;
+    let classification = null;
+    let nbRooms = null;
+
+    if (hotel) {
+      name = hotel.name;
+      classification = hotel.classification;
+      nbRooms = hotel.nbRooms;
+    }
+
     const clients: FormArray = new FormArray([]);
 
     this.nameControl = new FormControl(
-      null,
+      name,
       [Validators.required, Validators.minLength(3), Validators.maxLength(75)]
     );
     this.classificationControl = new FormControl(
-      null,
+      classification,
       [Validators.required, Validators.min(1), Validators.max(5), Validators.maxLength(1)]
     );
     this.nbRoomsControl = new FormControl(
-      null,
+      nbRooms,
       [Validators.required, Validators.min(1), Validators.max(1500)]
     );
 
@@ -56,5 +79,16 @@ export class HotelFormComponent implements OnInit {
       .subscribe(newHotel => {
         this.router.navigateByUrl('/');
       });
+  }
+
+  updateHotel(hotel: Hotel) {
+    this.activatedRoute.params.subscribe(params => {
+      const name: string = params.name;
+
+      this.hotelService.updateHotel(name, hotel)
+        .subscribe(newHotel => {
+          this.router.navigateByUrl('/hotels');
+        });
+    });
   }
 }

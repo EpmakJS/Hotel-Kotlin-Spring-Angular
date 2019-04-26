@@ -1,18 +1,14 @@
 <div *ngIf="client">
-
-  <div class="container-fluid">
-    <mat-card>
-      <mat-card-header class="row">
-        <mat-card-title id="top" class="col-sm-12">
-          <h1>{{ client.firstName + ' ' + client.lastName}}</h1>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-actions>
-        <button type="button" mat-icon-button color="danger" class="mat-button" (click)="deleteClient(client.id)">
-          <mat-icon>clear</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title id="top">
+        <h1>{{ client.firstName + ' ' + client.lastName}}</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+      <button type="button" mat-icon-button class="mat-button" (click)="deleteClient(client.id)">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>

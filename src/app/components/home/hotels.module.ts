@@ -13,8 +13,8 @@ import {CheckinModule} from './checkin/checkin.module';
 import {CheckoutModule} from './checkout/checkout.module';
 import {HotelModule} from './hotel/hotel.module';
 import {HotelFormModule} from './hotel-form/hotel-form.module';
-import {UpdateHotelModule} from './update-hotel/update-hotel.module';
 import {StarRatingModule} from 'angular-star-rating';
+import {MatIconModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -27,13 +27,13 @@ import {StarRatingModule} from 'angular-star-rating';
     CheckoutModule,
     HotelModule,
     HotelFormModule,
-    UpdateHotelModule,
     MatButtonModule,
     MatTooltipModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
+    MatIconModule,
     StarRatingModule.forRoot()
   ]
 })

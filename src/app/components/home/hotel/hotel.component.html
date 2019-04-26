@@ -1,32 +1,24 @@
 <div *ngIf="hotel">
-
-  <div class="container-fluid">
-    <mat-card>
-      <mat-card-header class="row">
-        <mat-card-title id="top" class="col-sm-12">
-          <h1>{{ hotel.name }}</h1>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="steps" *ngFor="let client of hotel.clients; let i = index">
-          <div class="row">
-            <div class="col-sm-12">
-              <h3 id="{{i}}">
-                <a routerLink="/clients/{{ client.id }}" class="">Client {{ i+1 }}. {{ client.firstName + ' ' + client.lastName }}</a>
-              </h3>
-            </div>
-          </div>
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <button type="button" mat-raised-button color="warn" class="mat-button" (click)="openDialog(hotel.name)">
-          Delete Hotel
-        </button>
-        <a routerLink="/hotels/{{ hotel.name }}/update" mat-raised-button color="accent" class="mat-button">Update Hotel</a>
-        <a routerLink="/hotels/{{ hotel.name }}/checkin" mat-raised-button color="primary" class="mat-button">Check-in</a>
-        <a routerLink="/hotels/{{ hotel.name }}/checkout" mat-raised-button color="primary" class="mat-button">Check-out</a>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title id="top">
+        <h1>{{ hotel.name }}</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="steps" *ngFor="let client of hotel.clients; let i = index">
+        <h3 id="{{i}}">
+          <a routerLink="/clients/{{ client.id }}" class="">Client {{ i+1 }}. {{ client.firstName + ' ' + client.lastName }}</a>
+        </h3>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="button" mat-raised-button color="warn" class="mat-button" (click)="openDialog(hotel.name)">
+        Delete Hotel
+      </button>
+      <a routerLink="/hotels/{{ hotel.name }}/update" mat-raised-button color="accent" class="mat-button">Update Hotel</a>
+      <a routerLink="/hotels/{{ hotel.name }}/checkin" mat-raised-button color="primary" class="mat-button">Check-in</a>
+      <a routerLink="/hotels/{{ hotel.name }}/checkout" mat-raised-button color="primary" class="mat-button">Check-out</a>
+    </mat-card-actions>
+  </mat-card>
 </div>

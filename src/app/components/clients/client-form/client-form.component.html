@@ -1,42 +1,36 @@
-<div class="container">
-  <div class="card-wrapper row">
-    <div class="col-sm-12">
-      <mat-card>
-        <mat-card-title class="col-sm-12">
-          <h2>Create new Client</h2>
-        </mat-card-title>
-        <mat-card-content class="col-sm-12">
-          <form [formGroup]="clientForm" (ngSubmit)="addClient(clientForm.value)">
-            <div class="row">
-              <mat-form-field class="col-sm-12">
-                <input matInput placeholder="Firstname" type="text" name="firstName" formControlName="firstName">
-                <mat-error align="end" *ngIf="!clientForm.controls['firstName'].valid && clientForm.controls['firstName'].touched">
-                  You must specify a firstname.
-                </mat-error>
-              </mat-form-field>
-            </div>
+<mat-card>
+  <mat-card-title>
+    <h2>Create new Client</h2>
+  </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="clientForm" (ngSubmit)="addClient(clientForm.value)">
+      <div class="row">
+        <mat-form-field>
+          <input matInput placeholder="Firstname" type="text" name="firstName" formControlName="firstName">
+          <mat-error align="end" *ngIf="!clientForm.controls['firstName'].valid && clientForm.controls['firstName'].touched">
+            You must specify a firstname.
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-            <div class="row">
-              <mat-form-field class="col-sm-12">
-                <input matInput placeholder="Lastname" type="text" name="lastName" formControlName="lastName">
-                <mat-error align="end" *ngIf="!clientForm.controls['lastName'].valid && clientForm.controls['lastName'].touched">
-                  You must specify a lastname.
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </form>
+      <div class="row">
+        <mat-form-field>
+          <input matInput placeholder="Lastname" type="text" name="lastName" formControlName="lastName">
+          <mat-error align="end" *ngIf="!clientForm.controls['lastName'].valid && clientForm.controls['lastName'].touched">
+            You must specify a lastname.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
 
-          <div>
-            <p>{{clientForm.value | json}}</p>
-          </div>
-
-          <mat-card-actions class="row">
-            <button (click)="addClient(clientForm.value)" mat-raised-button color="accent" class="mat-button" [disabled]="!clientForm.valid">
-              Add Client
-            </button>
-          </mat-card-actions>
-        </mat-card-content>
-      </mat-card>
+    <div>
+      <p>{{clientForm.value | json}}</p>
     </div>
-  </div>
-</div>
+
+    <mat-card-actions>
+      <button (click)="addClient(clientForm.value)" mat-raised-button color="accent" class="mat-button" [disabled]="!clientForm.valid">
+        Add Client
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

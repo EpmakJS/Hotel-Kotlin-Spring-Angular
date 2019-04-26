@@ -5,6 +5,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule,
+  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -30,7 +31,8 @@ import {ClientFormComponent} from './client-form.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule
   ]
 })
 export class ClientFormModule { }
