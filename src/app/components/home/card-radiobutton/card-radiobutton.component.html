@@ -1,0 +1,16 @@
+<div class="hotel-type">
+  <div class="radio-pane" >
+    <div
+      *ngFor="let option of options"
+      class="pane"
+      (click)="optionSelect(option);"
+      [class.active]="option.value === value"
+    >
+      <span>{{option.label | uppercase}}</span>
+      <mat-icon
+        [class.icon-active]="option.value === value"
+        class="icon"
+      >check_circle</mat-icon>
+    </div>
+  </div>
+</div>

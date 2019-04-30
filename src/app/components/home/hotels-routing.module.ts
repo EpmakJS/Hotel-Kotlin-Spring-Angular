@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent} from './home.component';
 import {HotelFormComponent} from './hotel-form/hotel-form.component';
 import {HotelComponent} from './hotel/hotel.component';
 import {CheckinComponent} from './checkin/checkin.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {HotelsResolver} from './hotels.resolver';
 import {UpdateHotelResolver} from './hotel-form/update-hotel.resolver';
+import {FilterPanelComponent} from './filter-panel/filter-panel.component';
+import {HomeComponent} from './home.component';
 
 const routes: Routes = [
   {

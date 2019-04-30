@@ -1,32 +1,36 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HotelsRoutingModule} from './hotels-routing.module';
-import {HomeComponent} from './home.component';
-
-import {MatButtonModule} from '@angular/material/button';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatListModule} from '@angular/material/list';
 import {CheckinModule} from './checkin/checkin.module';
 import {CheckoutModule} from './checkout/checkout.module';
 import {HotelModule} from './hotel/hotel.module';
 import {HotelFormModule} from './hotel-form/hotel-form.module';
+import {CardRadiobuttonModule} from './card-radiobutton/card-radiobutton.module';
+import {HomeComponent} from './home.component';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatTooltipModule
+} from '@angular/material';
 import {StarRatingModule} from 'angular-star-rating';
-import {MatIconModule} from '@angular/material';
+import {HotelsRoutingModule} from './hotels-routing.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     HomeComponent
   ],
   imports: [
-    CommonModule,
     HotelsRoutingModule,
+    CommonModule,
     CheckinModule,
     CheckoutModule,
     HotelModule,
     HotelFormModule,
+    CardRadiobuttonModule,
     MatButtonModule,
     MatTooltipModule,
     MatCardModule,
@@ -34,7 +38,9 @@ import {MatIconModule} from '@angular/material';
     MatInputModule,
     MatListModule,
     MatIconModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HotelsModule { }
